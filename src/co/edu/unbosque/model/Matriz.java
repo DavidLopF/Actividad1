@@ -15,7 +15,6 @@ public class Matriz {
 
         this.filas = filas;
         this.columnas = columnas;
-        System.out.println(filas + " " + columnas);
         array = new int[this.filas][this.columnas];
 
     }
@@ -117,7 +116,7 @@ public class Matriz {
         return primo;
     }
 
-    
+
     public int[] ordenarNumerosPrimos() {
         ArrayList list = new ArrayList<>();
         for (int j = 0; j < filas; j++) {
@@ -135,10 +134,10 @@ public class Matriz {
         int pos = 0;
         int aux = 0;
         //iteramos sobre los elementos del arreglo
-        for (int i = 0 ; i < temp.length - 1 ; i++) { // ordenamiento por selección
+        for (int i = 0; i < temp.length - 1; i++) { // ordenamiento por selección
             int max = i;
             //buscamos el mayor número
-            for (int j = i + 1 ; j < temp.length ; j++) {
+            for (int j = i + 1; j < temp.length; j++) {
                 if (temp[j] > temp[max]) {
                     max = j;    //encontramos el mayor número
                 }
@@ -154,9 +153,33 @@ public class Matriz {
         return temp;
     }
 
+    public int[] multiplosDeX(int a, int cantidadMultiplos) {
+        int cont = 0;
+        int[] temp = new int[cantidadMultiplos];
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                if (array[i][j] % a == 0 && cont < cantidadMultiplos && array[i][j]/a != 0 ) {
+                    temp[cont] = array[i][j];
+                    cont++;
+                }
+            }
+        }
+        int pos = 0;
+        int aux = 0;
+        for (int i = 0; i < temp.length; i++) {
+            pos = i;
+            aux = temp[i];
 
+            while (pos > 0 && temp[pos - 1] > aux) {
+                temp[pos] = temp[pos - 1];
+                pos--;
+            }
 
+            temp[pos] = aux;
+        }
+        return temp;
 
+    }
 
 
     public int getFilas() {
