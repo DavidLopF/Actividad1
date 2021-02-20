@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Controller {
     Vista view;
     Matriz matriz;
-    System.out.print("paso mi perro");
+ 
 
     public Controller() {
         view = new Vista();
