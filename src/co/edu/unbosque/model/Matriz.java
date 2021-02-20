@@ -67,7 +67,7 @@ public class Matriz {
     public int repeticionesNumero(int a) {
         int cont = 0;
         for (int j = 0; j < filas; j++) {
-            for (int i = 0; i < filas; i++) {
+            for (int i = 0; i < columnas; i++) {
                 if (a == array[j][i]) {
                     cont++;
                 }
@@ -100,19 +100,52 @@ public class Matriz {
                 }
             }
         }
-        for (int i = 0; i < temp.length - 1; i++) {
-            for (int j = 0; j < temp.length - 1; j++) { //organizador burbuja
-                if (temp[j] > temp[j + 1]) {
-                    aux = temp[j];
-                    temp[j] = temp[j + 1];
-                    temp[j + 1] = aux;
-                }
-            }
-        }
+
         return temp;
 
     }
 
+    private boolean esPrimo(int numero) {
+        int contador = 2;
+        boolean primo=true;
+
+        while ((primo) && (contador!=numero)){
+            if (numero % contador == 0)
+                primo = false;
+            contador++;
+        }
+
+        return primo;
+    }
+
+    public int[] ordenarNumerosPrimos() {
+        int[] temp = new int[filas * columnas];
+        int[] primos = new int[temp.length];
+        int cont = 0;
+        int pos = 0;
+        int aux = 0;
+        for (int j = 0; j < filas; j++) {
+            for (int i = 0; i < columnas; i++) {
+                if (esPrimo(array[j][i])) {
+                    temp[cont] = array[j][i];
+                    cont++;
+                }
+            }
+        }
+
+
+        for (int i = 0; i < temp.length; i++) { //ordenamiento por selección
+            pos = i;
+            aux = temp[i];
+
+            while (pos > 0 && temp[pos - 1] > aux) {
+                temp[pos] = temp[pos - 1];
+                pos--;
+            }
+        }
+
+        return temp;
+    }
 
     public int getFilas() {
         return filas;
