@@ -1,5 +1,6 @@
 package co.edu.unbosque.model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -106,35 +107,34 @@ public class Matriz {
     }
 
     private boolean esPrimo(int numero) {
-        int contador = 2;
-        boolean primo=true;
-
-        while ((primo) && (contador!=numero)){
-            if (numero % contador == 0)
+        boolean primo = true;
+        for (int i = 2; i < numero; i++) {
+            if (numero % i == 0) {
                 primo = false;
-            contador++;
+                break;
+            }
         }
-
         return primo;
     }
 
     public int[] ordenarNumerosPrimos() {
-        int[] temp = new int[filas * columnas];
-        int[] primos = new int[temp.length];
-        int cont = 0;
-        int pos = 0;
-        int aux = 0;
+        ArrayList list = new ArrayList<>();
         for (int j = 0; j < filas; j++) {
             for (int i = 0; i < columnas; i++) {
                 if (esPrimo(array[j][i])) {
-                    temp[cont] = array[j][i];
-                    cont++;
+                    list.add(array[j][i]);
+
                 }
             }
         }
-
-
-        for (int i = 0; i < temp.length; i++) { //ordenamiento por selección
+        int[] temp = new int[list.size()];
+        int cont = 0;
+        for (int i = 0; i < list.size(); i++) {
+            temp[i] = (int) list.get(i);
+        }
+        int pos = 0;
+        int aux = 0;
+        for (int i = 0; i < temp.length; i++) {
             pos = i;
             aux = temp[i];
 
@@ -142,9 +142,11 @@ public class Matriz {
                 temp[pos] = temp[pos - 1];
                 pos--;
             }
+            temp[pos] = aux;
         }
 
         return temp;
+
     }
 
     public int getFilas() {

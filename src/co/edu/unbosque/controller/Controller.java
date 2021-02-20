@@ -79,7 +79,7 @@ public class Controller {
         } else if (opcion.equals("5")) {
             String r = "";
             view.mostrarDato("La matriz es: \n" + matriz.mostrarMatriz());
-            for (int i = 0 ; i < matriz.ordenarNumerosPrimos().length ;i++) {
+            for (int i = matriz.ordenarNumerosPrimos().length-1; i >= 0; i--) {
              r +=  matriz.ordenarNumerosPrimos()[i] + " " ;
             }
             view.mostrarDato("Lo números primos de la matriz son: " +  r );
