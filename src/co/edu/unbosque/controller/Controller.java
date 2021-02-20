@@ -37,7 +37,8 @@ public class Controller {
                 "\n 2. Método que indique si un número existe dentro de la matríz (hacer uso de búsqueda binaria)." +
                 "\n 3. Método que indique si un número existe más de m veces indicadas por parámetro en la matriz (hacer uso de búsqueda secuencial). " +
                 "\n 4. Método que retorne un vector con los primeros n números impares de la matriz, ordenados ascendentemente (hacer uso del algoritmo burbuja)." +
-                "\n 5. Método que retorne un vector con todos los números primos existentes en la matriz, ordenados de manera descendente (hacer uso del algoritmo de selección).";
+                "\n 5. Método que retorne un vector con todos los números primos existentes en la matriz, ordenados de manera descendente (hacer uso del algoritmo de selección)."+
+                "\n 6. ";
 
 
         view.mostrarDato(menu);
@@ -79,7 +80,7 @@ public class Controller {
         } else if (opcion.equals("5")) {
             String r = "";
             view.mostrarDato("La matriz es: \n" + matriz.mostrarMatriz());
-            for (int i = matriz.ordenarNumerosPrimos().length-1; i >= 0; i--) {
+            for (int i = 0 ; i < matriz.ordenarNumerosPrimos().length; i++) {
              r +=  matriz.ordenarNumerosPrimos()[i] + " " ;
             }
             view.mostrarDato("Lo números primos de la matriz son: " +  r );

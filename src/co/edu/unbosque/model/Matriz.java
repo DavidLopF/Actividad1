@@ -117,13 +117,13 @@ public class Matriz {
         return primo;
     }
 
+    
     public int[] ordenarNumerosPrimos() {
         ArrayList list = new ArrayList<>();
         for (int j = 0; j < filas; j++) {
             for (int i = 0; i < columnas; i++) {
                 if (esPrimo(array[j][i])) {
                     list.add(array[j][i]);
-
                 }
             }
         }
@@ -134,20 +134,30 @@ public class Matriz {
         }
         int pos = 0;
         int aux = 0;
-        for (int i = 0; i < temp.length; i++) {
-            pos = i;
-            aux = temp[i];
-
-            while (pos > 0 && temp[pos - 1] > aux) {
-                temp[pos] = temp[pos - 1];
-                pos--;
+        //iteramos sobre los elementos del arreglo
+        for (int i = 0 ; i < temp.length - 1 ; i++) { // ordenamiento por selección
+            int max = i;
+            //buscamos el mayor número
+            for (int j = i + 1 ; j < temp.length ; j++) {
+                if (temp[j] > temp[max]) {
+                    max = j;    //encontramos el mayor número
+                }
             }
-            temp[pos] = aux;
+            if (i != max) {
+                //permutamos los valores
+                int aux1 = temp[i];
+                temp[i] = temp[max];
+                temp[max] = aux1;
+            }
         }
 
         return temp;
-
     }
+
+
+
+
+
 
     public int getFilas() {
         return filas;
