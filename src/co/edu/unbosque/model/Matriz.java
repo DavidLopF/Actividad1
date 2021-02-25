@@ -22,11 +22,9 @@ public class Matriz {
     public void llenarMatriz() {
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-
                 Random rnd = new Random();
-                int valor = rnd.nextInt(10);
+                int valor = rnd.nextInt(15);
                 array[i][j] = valor;
-
             }
         }
     }
@@ -121,16 +119,13 @@ public class Matriz {
         ArrayList list = new ArrayList<>();
         for (int j = 0; j < filas; j++) {
             for (int i = 0; i < columnas; i++) {
-                if (esPrimo(array[j][i])) {
+                if (esPrimo(array[j][i]) && array[j][i] != 0) {
                     list.add(array[j][i]);
                 }
             }
         }
         int[] temp = new int[list.size()];
-        int cont = 0;
-        for (int i = 0; i < list.size(); i++) {
-            temp[i] = (int) list.get(i);
-        }
+
         int pos = 0;
         int aux = 0;
         //iteramos sobre los elementos del arreglo
@@ -158,7 +153,7 @@ public class Matriz {
         int[] temp = new int[cantidadMultiplos];
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                if (array[i][j] % a == 0 && cont < cantidadMultiplos && array[i][j]/a != 0 ) {
+                if (array[i][j] % a == 0 && cont < cantidadMultiplos && array[i][j] / a != 0) {
                     temp[cont] = array[i][j];
                     cont++;
                 }
